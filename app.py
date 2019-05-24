@@ -5,6 +5,7 @@ app = Flask(__name__)
 URL_BASE = 'https://anapioficeandfire.com/api/'
 
 port = os.environ['PORT']
+app.run('0.0.0.0',int(port), debug=True)
 
 language = 'es-ES'
 
@@ -25,6 +26,3 @@ def contacto():
 @app.route('/listas')
 def listas():
     return render_template("listas.html")
-
-app.run('0.0.0.0',int(port), debug=True)
-# app.run(debug=True)
