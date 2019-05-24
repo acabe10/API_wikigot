@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 URL_BASE = 'https://anapioficeandfire.com/api/'
 
-port = os.environ['PORT']
+#port = os.environ['PORT']
 language = 'es-ES'
 
 @app.route('/',methods = ['GET'])
