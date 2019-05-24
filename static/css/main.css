@@ -11,7 +11,7 @@
    Global styles
    ========================================================================== */
 h1 {
-  font-family: 'Dr Sugiyama', cursive;
+  font-family: 'Lato', sans-serif;
 }
 
 h2, h3, p, .navbar-nav {
@@ -21,7 +21,7 @@ h2, h3, p, .navbar-nav {
 
 
 h1 {
-  font-size: 62px;
+  font-size: 72px;
   color: #ffffff;
 }
 
@@ -171,7 +171,7 @@ p {
    Navigation styles
    ========================================================================== */
 .navbar-inverse {
-    background-color: #4eabde;
+    background-color: #4a585f;
     border-color: rgba(0, 0, 0, 0);
 }
 
@@ -213,7 +213,7 @@ p {
    Main styles
    ========================================================================== */
 #header {
-  background: #4eacdd;
+  background: #4a585f;
   height: 650px;
   overflow: hidden;
 }
