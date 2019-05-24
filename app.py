@@ -6,19 +6,8 @@ URL_BASE = 'https://anapioficeandfire.com/api/'
 
 port = os.environ['PORT']
 app.run('0.0.0.0',int(port), debug=True)
-
 language = 'es-ES'
 
 @app.route('/',methods = ['GET'])
 def inicio():
-   def inicio():
-        return render_template("templates/index.html")
-
-#@app.route('/busqueda', methods = ['GET', 'POST'])
-#def busqueda():
-#        if request.method == 'GET':
-#            return render_template("busqueda.html")
-
-#@app.route('/contacto')
-#def contacto():
-#    return render_template("contact.html")
+	return render_template("templates/index.html")
