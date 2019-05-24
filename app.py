@@ -1,14 +1,16 @@
-from flask import Flask, render_template,abort,request
-import os,requests
-app = Flask(__name__)
+from flask import Flask, render_template
+app = Flask(__name__)	
 
-URL_BASE = 'https://anapioficeandfire.com/api/'
-
-port = os.environ['PORT']
-language = 'es-ES'
+#URL_BASE = 'https://anapioficeandfire.com/api/'
+#port = os.environ['PORT']
+#language = 'es-ES'
 
 @app.route('/')
 def inicio():
-	return render_template("index.html")
+    return render_template("inicio.html")
 
-app.run('0.0.0.0',int(port), debug=True)
+#@app.route('/articulos/')
+#def articulos():
+#    return render_template("articulos.html")
+
+app.run(debug=True)
