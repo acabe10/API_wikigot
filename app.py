@@ -9,8 +9,12 @@ app = Flask(__name__)
 def inicio():
     return render_template("index.html")
 
-#@app.route('/articulos/')
-#def articulos():
-#    return render_template("articulos.html")
+@app.route('/libros/')
+def articulos():
+    return render_template("libros.html")
+
+@app.route('/libros/')
+def articulos():
+    return render_template("libros.html")
 
 app.run(debug=True)
