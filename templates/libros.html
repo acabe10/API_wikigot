@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-<html lang="en"><head>
-  <meta charset="utf-8">
-  {% extends "index.html" %}
-</html>
+	{% for dato in datos%}
+		<li>{{dato.name}}</li>
+	{%endfor%}
