@@ -10,11 +10,15 @@ def inicio():
     return render_template("index.html")
 
 @app.route('/libros/')
-def articulos():
+def libros():
     return render_template("libros.html")
 
-@app.route('/libros/')
-def articulos():
-    return render_template("libros.html")
+@app.route('/casas/')
+def casas():
+	return render_template("casas.html")
+
+@app.route('/personajes/')
+def personajes():
+	return render_template("personajes.html")
 
 app.run(debug=True)
