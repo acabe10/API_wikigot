@@ -10,7 +10,7 @@ URL_BASE ="https://anapioficeandfire.com/api/"
 def inicio():
 	return render_template("index.html")
 
-@app.route('/libros/')
+@app.route('/libros/', methods = ['GET'])
 def libros():
 	r=requests.get(URL_BASE+'books/')
 	if r.status_code == 200:
