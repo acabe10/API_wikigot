@@ -1,5 +1,21 @@
-<!DOCTYPE html>
-<html lang="en"><head>
-  <meta charset="utf-8">
-  {% extends "index.html" %}
-</html>
+{% extends "index.html" %}	
+{% block content %}
+<!--Main 1-->
+    <section id="main1">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 margin-30">
+          	<h2>Busca a un personaje de Game Of Thrones</h2><br />
+            <form action="/busqueda" method="post">
+            <br/>
+              <input type="text" name="busqueda" size="30" value="{{busqueda}}">
+            <br>
+			<input type="submit" name="Buscar" value="Buscar"/>
+			<br />
+        	</form>
+            <br />
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock %}

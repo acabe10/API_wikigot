@@ -12,17 +12,23 @@ def inicio():
 
 @app.route('/libros/', methods = ['GET'])
 def libros():
-	r=requests.get(URL_BASE+'books/')
+	payload={"pagesize":20}
+	r=requests.get(URL_BASE+'books/',params=payload)
 	if r.status_code == 200:
 		doc = r.json()
 		return render_template("libros.html",datos=doc)
 
-@app.route('/casas/')
+@app.route('/casas/', methods = ['GET'])
 def casas():
-	return render_template("casas.html")
+	payload={"pagesize":5000}
+	r=requests.get(URL_BASE+'houses/',params=payload)
+	if r.status_code == 200:
+		doc = r.json()
+		return render_template("casas.html",datos=doc)
 
-@app.route('/personajes/')
+@app.route('/personajes/',methods = ['GET', 'POST'])
 def personajes():
-	return render_template("personajes.html")
+	if request.method == 'GET':
+		return render_template("personajes.html")
 
 app.run(debug=True)
