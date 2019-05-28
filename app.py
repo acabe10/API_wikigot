@@ -30,5 +30,21 @@ def casas():
 def personajes():
 	if request.method == 'GET':
 		return render_template("personajes.html")
+	else:
+		personaje=request.form['busqueda']
+		if personaje != '':
+			pagina=1
+			payload={"page":pagina}
+			r=request.get(URL_BASE+'characters/',params=payload)
+			if r.status_code == 200:
+				doc = r.json()
+				while personaje != doc["name"]:
+					pagina=pagina+1
+					payload={"page":pagina}
+					r=request.get(URL_BASE+'characters/',params=payload)
+				return render_template("personajes.html",datos=doc)
+		else:
+			error="Hay que introducir algún dato."
+			return render_template("personajes.html",error=error)
 
 app.run(debug=True)
