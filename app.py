@@ -33,14 +33,12 @@ def personajes():
 		personaje=request.form['busqueda']
 		if personaje != '':
 			pagina=1
-			payload={"page":pagina}
-			r=request.get(URL_BASE+'characters/',params=payload)
+			r=request.get(URL_BASE+'characters/'+pagina)
 			if r.status_code == 200:
 				doc = r.json()
 				while personaje != doc["name"]:
 					pagina=pagina+1
-					payload={"page":pagina}
-					r=request.get(URL_BASE+'characters/',params=payload)
+					r=request.get(URL_BASE+'characters/'+pagina)
 				return render_template("personajes.html",datos=doc)
 		else:
 			error="Hay que introducir algún dato."
