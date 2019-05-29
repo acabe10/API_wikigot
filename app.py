@@ -1,10 +1,9 @@
 import requests
-from flask import Flask, render_template, request, url_for
+from flask import Flask, render_template, request, os
 app = Flask(__name__)	
 URL_BASE ="https://anapioficeandfire.com/api/"
 
-#port = os.environ['PORT']
-#language = 'es-ES'
+port = os.environ['PORT']
 
 @app.route('/')
 def inicio():
@@ -47,4 +46,5 @@ def personajes():
 			error="Hay que introducir algún dato."
 			return render_template("personajes.html",error=error)
 
-app.run(debug=True)
+#app.run(debug=True)
+app.run('0.0.0.0',int(port), debug=True)
