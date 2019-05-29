@@ -6,7 +6,7 @@
         <div class="row">
           <div class="col-sm-6 margin-30">
           	<h2>Busca a un personaje de Game Of Thrones</h2><br />
-            <form action="/personajes" method="post">
+            <form action="/personajes/" method="post">
             <br/>
               <input type="text" name="busqueda" size="30" value="{{busqueda}}">
             <br>
@@ -20,10 +20,22 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-6 margin-30">
-          	<p>{% for dato in datos%}
-				<li>{{dato.name}}</li>
-				{%endfor%}
-            <br />
+            {% for dato in datos%}
+              <p>{{dato.name}}</p>
+              <p>Género: {{dato.gender}}</p>
+              <p>Cultura: {{dato.culture}}</p>
+              <p>Nacido: {{dato.born}}</p>
+              <p>Actor/Actriz: {{dato.playedBy[0]}}</p>
+            {%endfor%}
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 margin-30">
+      {% if error %}
+        <h2>{{ error }}</h2>
+      {% endif %}
           </div>
         </div>
       </div>

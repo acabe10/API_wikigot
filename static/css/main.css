@@ -181,6 +181,7 @@ p {
 
 .navbar {
   margin-bottom: 0px;
+  position: fixed;
 }
 
 .navbar-inverse .navbar-nav > li > a {
