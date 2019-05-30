@@ -18,12 +18,13 @@ def libros():
 		return render_template("libros.html",datos=doc)
 
 @app.route('/casas/', methods = ['GET'])
-def casas():
-	payload={"pagesize":5000}
+@app.route('/casas/<id>')
+def casas(id=1):
+	payload={"page":id}
 	r=requests.get(URL_BASE+'houses/',params=payload)
 	if r.status_code == 200:
 		doc = r.json()
-		return render_template("casas.html",datos=doc)
+		return render_template("casas.html",datos=doc,id=id)
 
 @app.route('/personajes/',methods = ['GET', 'POST'])
 def personajes():
@@ -36,7 +37,7 @@ def personajes():
 			r=requests.get(URL_BASE+'characters/',params=payload)
 			if r.status_code == 200:
 				doc=r.json()
-			return render_template("personajes.html",datos=doc)
+				return render_template("personajes.html",datos=doc)
 		else:
 			error="Hay que introducir algún dato."
 			return render_template("personajes.html",error=error)

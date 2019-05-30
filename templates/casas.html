@@ -5,12 +5,12 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-6 margin-30">
-            <h2>Casas de Game of Thrones</h2><br />
-            <p>{% for dato in datos%}
-				<li>{{dato.name}}</li>
-				{%endfor%}
-			</p>
-            <br />
+            <h2>Houses of Game of Thrones</h2><br/>
+            {% for dato in datos%}
+				      <li>{{dato.name}}</li>
+				    {%endfor%}
+            <br/>
+            <a href="http://google.com" class="button">Go to Google</a>
           </div>
           <div class="col-sm-6 wow fadeInUpBig">
             <img class="main1-img img-responsive pull-right" src="../static/img/casas.jpg" alt="Main1 Image">
