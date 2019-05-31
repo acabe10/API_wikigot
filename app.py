@@ -18,13 +18,24 @@ def libros():
 		return render_template("libros.html",datos=doc)
 
 @app.route('/casas/', methods = ['GET'])
-@app.route('/casas/<id>')
+@app.route('/casas/page=<id>')
 def casas(id=1):
-	payload={"page":id}
+	payload={"page":id,"pagesize":20}
+	id=int(id)
+	nexe=id+1
+	previous=id-1
 	r=requests.get(URL_BASE+'houses/',params=payload)
 	if r.status_code == 200:
 		doc = r.json()
-		return render_template("casas.html",datos=doc,id=id)
+		return render_template("casas.html",datos=doc,id=id,nexe=nexe,previous=previous)
+
+@app.route('/casas/<id>/<id2>')
+def casas_2(id=1,id2=1):
+	payload={"name":id2}
+	r=requests.get(URL_BASE+'houses/',params=payload)
+	if r.status_code == 200:
+		doc = r.json()
+		return render_template("casas.html",datos=doc,id=id,id2=id2)
 
 @app.route('/personajes/',methods = ['GET', 'POST'])
 def personajes():
