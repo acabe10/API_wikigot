@@ -35,7 +35,8 @@ def casas_2(id=1,id2=1):
 	r=requests.get(URL_BASE+'houses/',params=payload)
 	if r.status_code == 200:
 		doc = r.json()
-		return render_template("casas.html",datos=doc,id=id,id2=id2)
+		okis = "okis"
+		return render_template("casas.html",datos=doc,id=id,id2=id2,okis=okis)
 
 @app.route('/personajes/',methods = ['GET', 'POST'])
 def personajes():
