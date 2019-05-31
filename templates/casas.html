@@ -5,24 +5,19 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-6 margin-30">
-            <h2>Houses of Game of Thrones</h2><br/>
+            <h2 id=100>Houses of Game of Thrones</h2><br/>
             {% for dato in datos%}
-				      <li><a href='/casas/{{id}}/{{dato.name}}'>{{dato.name}}</a></li>
+				      <li><a href='#'>{{dato.name}}</a></li>
 				    {%endfor%}
             <br/>
             {%if id == 1%}
-              <button><a href='/casas/page={{nexe}}'>Siguiente</a></button>
+              <button><a href='/casas/page={{nexe}}#100'>Next</a></button>
             {%else%}
-              <button><a href='/casas/page={{previous}}' class="button">Anterior</a></button>
-              <button><a href='/casas/page={{nexe}}' class="button">Siguiente</a></button>
+              <button><a href='/casas/page={{previous}}#100' class="button">Previous</a></button>
+              <button><a href='/casas/page={{nexe}}#100' class="button">Next</a></button>
             {%endif%}
             {%if id == 23%}
-              <a href='/casas/page={{previous}}' class="button">Anterior</a>
-            {%endif%}
-            {%if okis%}
-            {% for dato in datos%}
-              <li>>{{dato.name}}</li>
-               <li>>{{dato.region}}</li>
+              <a href='/casas/page={{previous}}#100' class="button">Previous</a>
             {%endif%}
           </div>
           <div class="col-sm-6 wow fadeInUpBig">
