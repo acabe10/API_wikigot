@@ -7,17 +7,17 @@
           <div class="col-sm-6 margin-30">
             <h2 id=100>Houses of Game of Thrones</h2><br/>
             {% for dato in datos%}
-				      <li><a href='/casa/{{dato.name}}'>{{dato.name}}</a></li>
+				      <li><a href='/house/{{dato.name}}'>{{dato.name}}</a></li>
 				    {%endfor%}
             <br/>
             {%if id == 1%}
-              <button><a href='/casas/page={{nexe}}#100'>Next</a></button>
+              <button><a href='/houses/page={{nexe}}#100'>Next</a></button>
             {%else%}
-              <button><a href='/casas/page={{previous}}#100' class="button">Previous</a></button>
-              <button><a href='/casas/page={{nexe}}#100' class="button">Next</a></button>
+              <button><a href='/houses/page={{previous}}#100' class="button">Previous</a></button>
+              <button><a href='/houses/page={{nexe}}#100' class="button">Next</a></button>
             {%endif%}
             {%if id == 23%}
-              <a href='/casas/page={{previous}}#100' class="button">Previous</a>
+              <a href='/houses/page={{previous}}#100' class="button">Previous</a>
             {%endif%}
           </div>
           <div class="col-sm-6 wow fadeInUpBig">
