@@ -51,7 +51,7 @@ def characters():
 				doc=r.json()
 				return render_template("characters.html",datos=doc)
 		else:
-			error="Hay que introducir algún dato."
+			error="You must enter some data."
 			return render_template("characters.html",error=error)
 
 app.run(debug=True)
