@@ -9,17 +9,17 @@ URL_BASE ="https://anapioficeandfire.com/api/"
 def inicio():
 	return render_template("index.html")
 
-@app.route('/libros/', methods = ['GET'])
+@app.route('/books/', methods = ['GET'])
 def libros():
 	payload={"pagesize":20}
 	r=requests.get(URL_BASE+'books/',params=payload)
 	if r.status_code == 200:
 		doc = r.json()
-		return render_template("libros.html",datos=doc)
+		return render_template("books.html",datos=doc)
 
-@app.route('/casas/', methods = ['GET'])
-@app.route('/casas/page=<id>')
-def casas(id=1):
+@app.route('/houses/', methods = ['GET'])
+@app.route('/houses/page=<id>')
+def houses(id=1):
 	payload={"page":id,"pagesize":20}
 	id=int(id)
 	nexe=id+1
@@ -27,21 +27,21 @@ def casas(id=1):
 	r=requests.get(URL_BASE+'houses/',params=payload)
 	if r.status_code == 200:
 		doc = r.json()
-		return render_template("casas.html",datos=doc,id=id,nexe=nexe,previous=previous)
+		return render_template("houses.html",datos=doc,id=id,nexe=nexe,previous=previous)
 
-@app.route("/casa/<name>")
-def casa(name):
+@app.route("/house/<name>")
+def house(name):
 	payload={"name":name}
 	r=requests.get(URL_BASE+'houses/',params=payload)
 	if r.status_code == 200:
 		doc = r.json()
-		return render_template("casa.html",datos=doc)
+		return render_template("house.html",datos=doc)
 	
 
-@app.route('/personajes/',methods = ['GET', 'POST'])
-def personajes():
+@app.route('/characters/',methods = ['GET', 'POST'])
+def characters():
 	if request.method == 'GET':
-		return render_template("personajes.html")
+		return render_template("characters.html")
 	else:
 		personaje=request.form['busqueda']
 		if personaje != '':
@@ -49,10 +49,10 @@ def personajes():
 			r=requests.get(URL_BASE+'characters/',params=payload)
 			if r.status_code == 200:
 				doc=r.json()
-				return render_template("personajes.html",datos=doc)
+				return render_template("characters.html",datos=doc)
 		else:
 			error="Hay que introducir algún dato."
-			return render_template("personajes.html",error=error)
+			return render_template("characters.html",error=error)
 
 app.run(debug=True)
 #app.run('0.0.0.0',int(port), debug=True)
