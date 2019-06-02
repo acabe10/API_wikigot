@@ -29,9 +29,9 @@ def casas(id=1):
 		doc = r.json()
 		return render_template("casas.html",datos=doc,id=id,nexe=nexe,previous=previous)
 
-@app.route("/casa/<id>")
-def casa(nombre):
-	paload={"name":nombre}
+#@app.route("/casa/<id>")
+#def casa(nombre):
+#	paload={"name":nombre}
 	
 
 @app.route('/personajes/',methods = ['GET', 'POST'])
