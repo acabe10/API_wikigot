@@ -1,0 +1,42 @@
+{% extends "index.html" %}	
+{% block content %}
+<!--Main 1-->
+    <section id="main1">
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 margin-30">
+            {% for dato in datos%}
+              <h2 id=100>{{dato.name}}</h2><br/>
+              {%if dato.region%}
+                <strong><p>Region:</strong> {{dato.region}}</p>
+              {%else%}
+                <strong><p>Region:</strong> No data</p>
+              {%endif%}
+              {%if dato.coatOfArms%}
+                <strong><p>Coat Of Arms:</strong> {{dato.coatOfArms}}</p>
+              {%else%}
+                <strong><p>Coat Of Arms:</strong> No data</p>
+              {%endif%}
+              {%if dato.words%}
+                <strong><p>Words:</strong> {{dato.words}}</p>
+              {%else%}
+                <strong><p>Words:</strong> No data</p>
+              {%endif%}
+              {%if dato.titles[0]%}
+                <strong><p>Titles:</strong></p>
+                {% for titulo in dato.titles%}
+                  <p>{{titulo}}</p>
+                {%endfor%}
+              {%else%}
+                <strong><p>Titles:</strong> No data</p>
+              {%endif%}
+				    {%endfor%}
+            <br/>
+          </div>
+          <div class="col-sm-6 wow fadeInUpBig">
+            <img class="main1-img img-responsive pull-right" src="../static/img/casas.jpg" alt="Main1 Image">
+          </div>
+        </div>
+      </div>
+    </section>
+{% endblock %}
