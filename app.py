@@ -54,5 +54,13 @@ def characters():
 			error="You must enter some data."
 			return render_template("characters.html",error=error)
 
+@app.route("/books/<name>")
+def books(name):
+	payload={"name":name}
+	r=requests.get(URL_BASE+'books/',params=payload)
+	if r.status_code == 200:
+		doc = r.json()
+		return render_template("books_info.html",datos=doc)
+
 app.run(debug=True)
 #app.run('0.0.0.0',int(port), debug=True)
