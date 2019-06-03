@@ -1,9 +1,9 @@
 import requests
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, os
 app = Flask(__name__)	
 URL_BASE ="https://anapioficeandfire.com/api/"
 
-#port = os.environ['PORT']
+port = os.environ["PORT"]
 
 @app.route('/')
 def inicio():
@@ -63,5 +63,5 @@ def books(name):
 		fecha=doc[0]['released'].strip('T00:00:00')
 		return render_template("books_id.html",datos=doc,fecha=fecha)
 
-app.run(debug=True)
-#app.run('0.0.0.0',int(port), debug=True)
+#app.run(debug=True)
+app.run('0.0.0.0',int(port), debug=True)
