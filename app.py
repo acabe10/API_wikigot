@@ -60,7 +60,8 @@ def books(name):
 	r=requests.get(URL_BASE+'books/',params=payload)
 	if r.status_code == 200:
 		doc = r.json()
-		return render_template("books_id.html",datos=doc)
+		fecha=doc[0]['released'].strip('T00:00:00')
+		return render_template("books_id.html",datos=doc,fecha=fecha)
 
 app.run(debug=True)
 #app.run('0.0.0.0',int(port), debug=True)

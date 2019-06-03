@@ -1,19 +1,46 @@
-{% extends "index.html" %}	
+{% extends "index.html" %}  
 {% block content %}
 <!--Main 1-->
     <section id="main1">
       <div class="container">
         <div class="row">
           <div class="col-sm-6 margin-30">
-            <h2>Books of Game of Thrones</h2><br />
-            <p>{% for dato in datos%}
-				    <li><a href='/books/{{dato.name}}'>{{dato.name}}</a></li>
-				      {%endfor%}
-			     </p>
-            <br />
+            {% for dato in datos%}
+              <h2 id=100>{{dato.name}}</h2><br/>
+              {%if dato.isbn%}
+                <strong><p>ISBN:</strong> {{dato.isbn}}</p>
+              {%else%}
+                <strong><p>ISBN:</strong> No data</p>
+              {%endif%}
+              {%if dato.authors[0]%}
+                <strong><p>Authors:</strong></p>
+                {% for author in dato.authors%}
+                  <p>{{author}}</p>
+                {%endfor%}
+              {%else%}
+                <strong><p>Authors:</strong> No data</p>
+              {%endif%}
+              {%if dato.numberOfPages%}
+                <strong><p>Pages:</strong> {{dato.numberOfPages}}</p>
+              {%else%}
+                <strong><p>Pages:</strong> No data</p>
+              {%endif%}
+              {%if dato.publisher%}
+                <strong><p>Publisher:</strong> {{dato.publisher}}</p>
+              {%else%}
+                <strong><p>Publisher:</strong> No data</p>
+              {%endif%}
+              {%if dato.country%}
+                <strong><p>Country:</strong> {{dato.country}}</p>
+              {%else%}
+                <strong><p>Country:</strong> No data</p>
+              {%endif%}
+            {%endfor%}
+            <strong><p>Released:</strong> {{fecha}}</p>
+            <br/>
           </div>
           <div class="col-sm-6 wow fadeInUpBig">
-            <img class="main1-img img-responsive pull-right" src="../static/img/libros.jpg" alt="Main1 Image">
+            <img class="main1-img img-responsive pull-right" src="../static/img/casas.jpg" alt="Main1 Image">
           </div>
         </div>
       </div>
