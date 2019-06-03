@@ -1,5 +1,5 @@
-import requests
-from flask import Flask, render_template, request, os
+import requests, os
+from flask import Flask, render_template, request
 app = Flask(__name__)	
 URL_BASE ="https://anapioficeandfire.com/api/"
 
