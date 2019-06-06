@@ -35,11 +35,14 @@ def house(name):
 	r=requests.get(URL_BASE+'houses/',params=payload)
 	if r.status_code == 200:
 		doc = r.json()
-		current_lord=doc[0]['currentLord']
-		r_2=requests.get(current_lord)
-		if r_2.status_code == 200:
-			doc_2 = r_2.json()
-			return render_template("house.html",datos=doc,datos_2=doc_2)
+		try:
+			current_lord=doc[0]['currentLord']
+			r_2=requests.get(current_lord)
+			if r_2.status_code == 200:
+				doc_2 = r_2.json()
+		except:
+			doc_2=""
+		return render_template("house.html",datos=doc,datos_2=doc_2)
 	
 
 @app.route('/characters/',methods = ['GET', 'POST'])
