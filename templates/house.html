@@ -31,6 +31,9 @@
                 <strong><p>Titles:</strong> No data</p>
               {%endif%}
 				    {%endfor%}
+            {% for data in doc_2%}
+              <strong><p>Current Lord:</strong> {{data.name}}</p>
+            {%endfor%}
             <br/>
           </div>
           <div class="col-sm-6 wow fadeInUpBig">
