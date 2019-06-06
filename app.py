@@ -72,8 +72,8 @@ def character(name):
 	payload={"name":name}
 	r=requests.get(URL_BASE+'characters/',params=payload)
 	if r.status_code == 200:
-				doc=r.json()
-				return render_template("characters.html",datos=doc)
+		doc=r.json()
+		return render_template("character.html",datos=doc)
 
 
 app.run(debug=True)
