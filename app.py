@@ -33,6 +33,7 @@ def houses(id=1):
 def house(name):
 	payload={"name":name}
 	r=requests.get(URL_BASE+'houses/',params=payload)
+	lista=[]
 	if r.status_code == 200:
 		doc = r.json()
 		try:
@@ -42,7 +43,16 @@ def house(name):
 				doc_2 = r_2.json()
 		except:
 			doc_2=""
-		return render_template("house.html",datos=doc,datos_2=doc_2)
+		try:
+			for i in doc[0]['swornMembers']:
+				r_3=requests.get(i)
+				if r_3.status_code == 200:
+					doc_3 = r_3.json()
+					lista.append(doc_3['name'])
+					print(lista)
+		except:
+			doc_3=""
+		return render_template("house.html",datos=doc,datos_2=doc_2,datos_3=lista)
 	
 
 @app.route('/characters/',methods = ['GET', 'POST'])
