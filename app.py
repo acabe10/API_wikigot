@@ -67,5 +67,14 @@ def books(name):
 		fecha=doc[0]['released'].strip('T00:00:00')
 		return render_template("books_id.html",datos=doc,fecha=fecha)
 
+@app.route("/character/<name>")
+def character(name):
+	payload={"name":name}
+	r=requests.get(URL_BASE+'characters/',params=payload)
+	if r.status_code == 200:
+				doc=r.json()
+				return render_template("characters.html",datos=doc)
+
+
 app.run(debug=True)
 #app.run('0.0.0.0',int(port), debug=True)

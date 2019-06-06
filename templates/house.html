@@ -31,7 +31,11 @@
                 <strong><p>Titles:</strong> No data</p>
               {%endif%}
 				    {%endfor%}
-            <strong><p>Current Lord:</strong><a href='/character/{{datos_2.name}}'> {{datos_2.name}}</a></p>
+            {%if datos_2.name%}
+              <strong><p>Current Lord:</strong><a href='/character/{{datos_2.name}}'> {{datos_2.name}}</a></p>
+            {%else%}
+              <strong><p>Current Lord:</strong> No data</p>
+            {%endif%}
             <br/>
           </div>
           <div class="col-sm-6 wow fadeInUpBig">
