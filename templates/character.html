@@ -26,6 +26,11 @@
               <strong><p>Titles: </strong>No data</p>
               {%endif%}
             {%endfor%}
+            {%if datos_2.name%}
+              <strong><p>House:</strong><a href='/house/{{datos_2.name}}'> {{datos_2.name}}</a></p>
+            {%else%}
+              <strong><p>House:</strong> No data</p>
+            {%endif%}
           </div>
         </div>
       </div>

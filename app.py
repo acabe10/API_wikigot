@@ -73,7 +73,13 @@ def character(name):
 	r=requests.get(URL_BASE+'characters/',params=payload)
 	if r.status_code == 200:
 		doc=r.json()
-		return render_template("character.html",datos=doc)
+		try:
+			house=doc[0]['allegiances'][0]
+			r_3=requests.get(house)
+			doc_2=r_3.json()
+		except:
+			doc_2=""
+		return render_template("character.html",datos=doc,datos_2=doc_2)
 
 
 app.run(debug=True)
