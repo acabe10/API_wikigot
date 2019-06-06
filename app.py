@@ -36,10 +36,10 @@ def house(name):
 	if r.status_code == 200:
 		doc = r.json()
 		current_lord=doc[0]['currentLord']
-		payload_2={"name":current_lord}
-		r_2=requests.get(URL_BASE+'characters/',params=payload_2)
-		doc_2 = r_2.json()
-		return render_template("house.html",datos=doc,doc_2=doc_2)
+		r_2=requests.get(current_lord)
+		if r_2.status_code == 200:
+			doc_2 = r_2.json()
+			return render_template("house.html",datos=doc,datos_2=doc_2)
 	
 
 @app.route('/characters/',methods = ['GET', 'POST'])

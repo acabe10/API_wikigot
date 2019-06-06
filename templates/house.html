@@ -31,8 +31,10 @@
                 <strong><p>Titles:</strong> No data</p>
               {%endif%}
 				    {%endfor%}
-            {% for data in doc_2%}
-              <strong><p>Current Lord:</strong> {{data.name}}</p>
+            {%for data in datos_2%}
+              {%if data.name%}
+                <strong><p>Current Lord:</strong> {{data.name}}</p>
+              {%endif%}
             {%endfor%}
             <br/>
           </div>
