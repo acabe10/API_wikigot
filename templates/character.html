@@ -28,10 +28,13 @@
               <strong><p>Titles: </strong>No data</p>
               {%endif%}
             {%endfor%}
-            {%if datos_2.name%}
-              <strong><p>House:</strong><a href='/house/{{datos_2.name}}'> {{datos_2.name}}</a></p>
+            {%if lista%}
+            <strong><p>Allegiances:</strong></p>
+              {%for lealtad in lista%}
+                <p><a href='/house/{{lealtad}}'> {{lealtad}}</a></p>
+              {%endfor%}
             {%else%}
-              <strong><p>House:</strong> No data</p>
+              <strong><p>Allegiances:</strong> No data</p>
             {%endif%}
           </div>
         </div>

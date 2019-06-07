@@ -57,9 +57,8 @@ def house(name):
 				if r_3.status_code == 200:
 					doc_3 = r_3.json()
 					lista.append(doc_3['name'])
-					print(lista)
 		except:
-			doc_3=""
+			lista=""
 		return render_template("house.html",datos=doc,datos_2=doc_2,datos_3=lista)
 	
 
@@ -92,15 +91,18 @@ def books(name):
 def character(name):
 	payload={"name":name}
 	r=requests.get(URL_BASE+'characters/',params=payload)
+	lista=[]
 	if r.status_code == 200:
 		doc=r.json()
 		try:
-			house=doc[0]['allegiances'][0]
-			r_3=requests.get(house)
-			doc_2=r_3.json()
+			for i in doc[0]['allegiances']:
+				r_3=requests.get(i)
+				if r_3.status_code == 200:
+					doc_3 = r_3.json()
+					lista.append(doc_3['name'])
 		except:
-			doc_2=""
-		return render_template("character.html",datos=doc,datos_2=doc_2)
+			lista=""
+		return render_template("character.html",datos=doc,lista=lista)
 
 
 #app.run(debug=True)
