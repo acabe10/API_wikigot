@@ -20,13 +20,9 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-6 margin-30">
-            {%if datos%}
               {% for dato in datos%}
                 <strong><h2><a href='/character/{{dato.name}}'>{{dato.name}}</a></h2></strong>
               {%endfor%}
-            {% else %}
-              <strong><h2>Does not exist</h2></strong>
-            {%endif%}
           </div>
         </div>
       </div>
