@@ -1,9 +1,9 @@
-import requests, os
+import requests
 from flask import Flask, render_template, request, url_for, redirect
 app = Flask(__name__)	
 URL_BASE ="https://anapioficeandfire.com/api/"
 
-port = os.environ["PORT"]
+#port = os.environ["PORT"]
 
 @app.route('/')
 def inicio():
@@ -105,5 +105,5 @@ def character(name):
 		return render_template("character.html",datos=doc,lista=lista)
 
 
-#app.run(debug=True)
-app.run('0.0.0.0',int(port), debug=True)
+app.run(debug=True)
+#app.run('0.0.0.0',int(port), debug=True)
