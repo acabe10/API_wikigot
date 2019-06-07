@@ -33,6 +33,7 @@
 				    {%endfor%}
             {%if datos_2.name%}
               <strong><p>Current Lord:</strong><a href='/character/{{datos_2.name}}'> {{datos_2.name}}</a></p>
+            {%endif%}
             {%if datos_3%}
             <strong><p>Sworn Members:</strong></p>
               {% for member in datos_3%}
