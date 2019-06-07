@@ -5,6 +5,25 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-6 margin-30">
+            <h2 id=100>Search a house of Game Of Thrones</h2><br />
+            <form action="/houses/" method="post">
+            <br/>
+              <input type="text" name="busqueda" size="30" value="{{busqueda}}">
+            <br>
+      <input type="submit" name="Search" value="Search"/>
+      <br />
+          </form>
+            <br />
+          </div>
+        </div>
+        {% if error %}
+          <h2>{{ error }}</h2>
+        {% endif %}
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 margin-30">
+            {% if not error %}
             <h2 id=100>Houses of Game of Thrones</h2><br/>
             {% for dato in datos%}
 				      <li><a href='/house/{{dato.name}}'>{{dato.name}}</a></li>
@@ -19,6 +38,7 @@
             {%if id == 23%}
               <a href='/houses/page={{previous}}#100' class="button">Previous</a>
             {%endif%}
+            {% endif %}
           </div>
           <div class="col-sm-6 wow fadeInUpBig">
             <img class="main1-img img-responsive pull-right" src="../static/img/casas.jpg" alt="Main1 Image">

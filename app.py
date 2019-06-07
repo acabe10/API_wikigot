@@ -1,5 +1,5 @@
 import requests
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, url_for, redirect
 app = Flask(__name__)	
 URL_BASE ="https://anapioficeandfire.com/api/"
 
@@ -17,17 +17,25 @@ def libros():
 		doc = r.json()
 		return render_template("books.html",datos=doc)
 
-@app.route('/houses/', methods = ['GET'])
+@app.route('/houses/', methods = ['GET', 'POST'])
 @app.route('/houses/page=<id>')
 def houses(id=1):
-	payload={"page":id,"pagesize":20}
-	id=int(id)
-	nexe=id+1
-	previous=id-1
-	r=requests.get(URL_BASE+'houses/',params=payload)
-	if r.status_code == 200:
-		doc = r.json()
-		return render_template("houses.html",datos=doc,id=id,nexe=nexe,previous=previous)
+	if request.method == 'GET':
+		payload={"page":id,"pagesize":20}
+		id=int(id)
+		nexe=id+1
+		previous=id-1
+		r=requests.get(URL_BASE+'houses/',params=payload)
+		if r.status_code == 200:
+			doc = r.json()
+			return render_template("houses.html",datos=doc,id=id,nexe=nexe,previous=previous)
+	else:
+		name=request.form['busqueda']
+		if name != '':
+			return redirect(url_for('house',name=name))
+		else:
+			error="You must enter some data."
+			return render_template("houses.html",error=error)
 
 @app.route("/house/<name>")
 def house(name):
