@@ -33,16 +33,11 @@
 				    {%endfor%}
             {%if datos_2.name%}
               <strong><p>Current Lord:</strong><a href='/character/{{datos_2.name}}'> {{datos_2.name}}</a></p>
-            {%else%}
-              <strong><p>Current Lord:</strong> No data</p>
-            {%endif%}
             {%if datos_3%}
             <strong><p>Sworn Members:</strong></p>
               {% for member in datos_3%}
                   <a href='/character/{{member}}'> {{member}}</a></p>
               {%endfor%}
-            {%else%}
-              <strong><p>Sworn Members:</strong> No data</p>
             {%endif%}
             <br/>
           </div>
