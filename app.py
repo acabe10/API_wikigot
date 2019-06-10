@@ -2,11 +2,11 @@ import requests, os
 from flask import Flask, render_template, request, url_for, redirect
 app = Flask(__name__)	
 URL_BASE ="https://anapioficeandfire.com/api/"
-URL_BASE_actor ='https://api.themoviedb.org/3/search/person'
+URL_BASE_actor ="https://api.themoviedb.org/3/search/person"
 language="es-ES"
 key = os.environ['key']
 
-port = os.environ["PORT"]
+#port = os.environ["PORT"]
 
 @app.route('/')
 def inicio():
@@ -57,6 +57,7 @@ def house(name):
 				doc_2_url = doc_2['url'].split("/")[-1]
 		except:
 			doc_2=""
+			doc_2_url=""
 		try:
 			for i in doc[0]['swornMembers']:
 				r_3=requests.get(i)
@@ -108,6 +109,7 @@ def books(name):
 def character(url):
 	r=requests.get(URL_BASE+'characters/'+url)
 	lista=[]
+	url_foto=[]
 	if r.status_code == 200:
 		doc=r.json()
 		try:
@@ -119,16 +121,25 @@ def character(url):
 		except:
 			lista=""
 		try:
-			playedby=doc['playedBy'][0]
-			payload={"api_key":key,"query":playedby,"language":language}
-			r_2=requests.get(URL_BASE_actor,params=payload)
-			if r_2.status_code == 200:
-				doc_2 = r.json()
-				url_foto=doc_2['results'][0]['profile_path']
+			if "," in doc['playedBy'][0]:
+				playedby=doc['playedBy'][0].split(",")[1]
+				payload={"api_key":key,"query":playedby,"language":language}
+				r_2=requests.get(URL_BASE_actor,params=payload)
+				if r_2.status_code == 200:
+					doc_2 = r_2.json()
+					url_foto=doc_2['results'][0]['profile_path']
+			else:
+				playedby=doc['playedBy'][0]
+				payload={"api_key":key,"query":playedby,"language":language}
+				r_2=requests.get(URL_BASE_actor,params=payload)
+				if r_2.status_code == 200:
+					doc_2 = r_2.json()
+					url_foto=doc_2['results'][0]['profile_path']
 		except:
 			url_foto=""
+			print(url_foto)
 		return render_template("character.html",datos=doc,lista=lista,foto=url_foto)
 
 
-#app.run(debug=True)
-app.run('0.0.0.0',int(port), debug=True)
+app.run(debug=True)
+#app.run('0.0.0.0',int(port), debug=True)

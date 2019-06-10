@@ -40,8 +40,9 @@
             {%endif%}
           </div>
           <div class="col-sm-6 wow fadeInUpBig">
-            </br></br><img src = "https://image.tmdb.org/t/p/w300{{foto}}" class="fotoactor" alt='actor'>
-            <strong><p>Allegiances:</strong>{{foto}}</p>
+            {%if foto[0]%}
+            </br></br><img class="main1-img img-responsive pull-right" src="https://image.tmdb.org/t/p/w300{{foto}}" alt="Foto actor">
+            {%endif%}
           </div>
         </div>
       </div>
