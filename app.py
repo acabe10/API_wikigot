@@ -4,7 +4,7 @@ app = Flask(__name__)
 URL_BASE ="https://anapioficeandfire.com/api/"
 URL_BASE_actor ='https://api.themoviedb.org/3/search/person'
 language="es-ES"
-key_tmdb = os.environ['key_tmdb']
+key = os.environ['key']
 
 port = os.environ["PORT"]
 
@@ -120,7 +120,7 @@ def character(url):
 			lista=""
 		try:
 			playedby=doc['playedBy'][0]
-			payload={"api_key":key_tmdb,"query":playedby,"language":language}
+			payload={"api_key":key,"query":playedby,"language":language}
 			r_2=requests.get(URL_BASE_actor,params=payload)
 			if r_2.status_code == 200:
 				doc_2 = r.json()
