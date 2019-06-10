@@ -34,20 +34,22 @@
             {%if datos_2.name%}
               <strong><p>Current Lord:</strong><a href='/character/{{doc_2_url}}'> {{datos_2.name}}</a></p>
             {%endif%}
-            {%if datos_3%}
-            <strong><p>Sworn Members:</strong></p>
-              {% for member,url,alias in datos_3%}
-                {%if alias%}
-                  <a href='/character/{{url}}'> {{member}} - {{alias}}</a></p>
-                {%else%}
-                  <a href='/character/{{url}}'> {{member}}</a></p>
-                {%endif%}
-              {%endfor%}
-            {%endif%}
+            {% for dato in datos%}
+              {%if dato.swornMembers%}
+                <strong><p>Sworn members:</strong></p>
+              {%endif%}
+            {%endfor%}
+                {% for member,url,alias in datos_3%}
+                  {%if alias%}
+                    <a href='/character/{{url}}'> {{member}} - {{alias}}</a></p>
+                  {%else%}
+                    <a href='/character/{{url}}'> {{member}}</a></p>
+                  {%endif%}
+                {%endfor%}
             <br/>
           </div>
           <div class="col-sm-6 wow fadeInUpBig">
-            </br></br<img class="main1-img img-responsive pull-right" src="../static/images/casas.jpg" alt="Main1 Image">
+            </br></br><img class="main1-img img-responsive pull-right" src="../static/images/casas.jpg" alt="Main1 Image">
           </div>
         </div>
       </div>

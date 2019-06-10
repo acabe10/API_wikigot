@@ -22,7 +22,7 @@
               {%if datos.playedBy[0]%}
                 <strong><p>PlayedBy:</strong> {{datos.playedBy[0]}}</p>
               {%endif%}
-              {%if datos.titles%}
+              {%if datos.titles[0]%}
               	<strong><p>Titles:</strong></p>
                 {% for titulo in datos.titles%}
                   <p>{{titulo}}</p>
@@ -40,8 +40,8 @@
             {%endif%}
           </div>
           <div class="col-sm-6 wow fadeInUpBig">
-            {%if foto[0]%}
-            </br></br><img class="main1-img img-responsive pull-right" src="https://image.tmdb.org/t/p/w300{{foto}}" alt="Foto actor">
+            {%if foto%}
+              </br></br><img class="main1-img img-responsive pull-right" src="https://image.tmdb.org/t/p/w300{{foto}}" alt="Foto actor">
             {%endif%}
           </div>
         </div>

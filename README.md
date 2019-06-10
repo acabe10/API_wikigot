@@ -16,4 +16,6 @@ En este caso, hemos elegido una API que va a recoger toda la información de los
 
 URL de la API: https://anapioficeandfire.com/
 
+URL de API para fotos de actores: https://www.themoviedb.org/
+
 URL de Heroku: http://wikigot.herokuapp.com/
