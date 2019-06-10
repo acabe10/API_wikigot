@@ -2,6 +2,9 @@ import requests, os
 from flask import Flask, render_template, request, url_for, redirect
 app = Flask(__name__)	
 URL_BASE ="https://anapioficeandfire.com/api/"
+URL_BASE_actor ='https://api.themoviedb.org/3/search/person'
+language="es-ES"
+key_tmdb = os.environ['key_tmdb']
 
 port = os.environ["PORT"]
 
@@ -115,7 +118,16 @@ def character(url):
 					lista.append(doc_3['name'])
 		except:
 			lista=""
-		return render_template("character.html",datos=doc,lista=lista)
+		try:
+			playedby=doc['payedBy'][0]
+			payload={"api_key":key_tmdb,"query":playedby,"language":language}
+			r_2=requests.get(URL_BASE_actor,params=payload)
+			if r_2.status_code == 200:
+				doc_2 = r.json()
+				url_foto=doc_2['results'][0]['profile_path']
+		except:
+			url_foto=""
+		return render_template("character.html",datos=doc,lista=lista,foto=url_foto)
 
 
 #app.run(debug=True)
