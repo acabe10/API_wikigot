@@ -5,10 +5,10 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-6 margin-30">
-              {%if datos.aliases%}
+              {%if datos.aliases[0]%}
               </br><strong><h2>{{datos.name}} - {{datos.aliases[0]}}</h2></strong>
               {%else%}
-            </br><strong><h2>{{datos.name}}</h2></strong>
+              </br><strong><h2>{{datos.name}}</h2></strong>
               {%endif%}
               <strong><p>Gender:</strong> {{datos.gender}}</p>
               {%if datos.culture%}
