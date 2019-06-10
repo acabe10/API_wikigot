@@ -54,6 +54,7 @@ def house(name):
 			r_2=requests.get(current_lord)
 			if r_2.status_code == 200:
 				doc_2 = r_2.json()
+				doc_2_url = doc_2['url'].split("/")[-1]
 		except:
 			doc_2=""
 		try:
@@ -68,7 +69,7 @@ def house(name):
 			lista=""
 			lista_2=""
 			lista_3=""
-		return render_template("house.html",datos=doc,datos_2=doc_2,datos_3=zip(lista,lista_2,lista_3))
+		return render_template("house.html",datos=doc,datos_2=doc_2,datos_3=zip(lista,lista_2,lista_3),doc_2_url=doc_2_url)
 	
 
 @app.route('/characters/',methods = ['GET', 'POST'])
@@ -85,7 +86,6 @@ def characters():
 			lista_3=[]
 			if r.status_code == 200:
 				doc=r.json()
-				print(doc)
 				for i in doc:
 					lista.append(i['name'])
 					lista_2.append(i['url'].split("/")[-1])
@@ -119,7 +119,7 @@ def character(url):
 		except:
 			lista=""
 		try:
-			playedby=doc['payedBy'][0]
+			playedby=doc['playedBy'][0]
 			payload={"api_key":key_tmdb,"query":playedby,"language":language}
 			r_2=requests.get(URL_BASE_actor,params=payload)
 			if r_2.status_code == 200:
