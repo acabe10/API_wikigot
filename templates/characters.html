@@ -21,7 +21,11 @@
         <div class="row">
           <div class="col-sm-6 margin-30">
               {% for dato in datos%}
-                <strong><h2><a href='/character/{{dato.name}}'>{{dato.name}}</a></h2></strong>
+                {% if dato.aliases[0] %]
+                  <strong><h2><a href='/character/{{idd}}'>{{dato.name}} - {{dato.aliases[0]}}</a></h2></strong>
+                {%else%}
+                  <strong><h2><a href='/character/{{idd}}'>{{dato.name}}</a></h2></strong>
+                {%endif%}
               {%endfor%}
           </div>
         </div>

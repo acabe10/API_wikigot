@@ -36,8 +36,12 @@
             {%endif%}
             {%if datos_3%}
             <strong><p>Sworn Members:</strong></p>
-              {% for member in datos_3%}
-                  <a href='/character/{{member}}'> {{member}}</a></p>
+              {% for member,url,alias in datos_3%}
+                {%if alias%}
+                  <a href='/character/{{url}}'> {{member}} - {{alias}}</a></p>
+                {%else%}
+                  <a href='/character/{{url}}'> {{member}}</a></p>
+                {%endif%}
               {%endfor%}
             {%endif%}
             <br/>
