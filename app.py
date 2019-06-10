@@ -82,11 +82,12 @@ def characters():
 			lista_3=[]
 			if r.status_code == 200:
 				doc=r.json()
+				print(doc)
 				for i in doc:
 					lista.append(i['name'])
 					lista_2.append(i['url'].split("/")[-1])
 					lista_3.append(i['aliases'])
-					return render_template("characters.html",datos=zip(lista,lista_2,lista_3))
+				return render_template("characters.html",datos=zip(lista,lista_2,lista_3))
 		else:
 			error="You must enter some data."
 			return render_template("characters.html",error=error)

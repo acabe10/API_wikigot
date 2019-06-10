@@ -19,16 +19,14 @@
       </div>
       <div class="container">
         <div class="row">
-          <div class="col-sm-6 margin-30">
-               
-                  {%for name,url,alias in datos%}
-                    {%if alias%}
-                      <strong><h2><a href='/character/{{url}}'>{{name}} - {{alias[0]}}</a></h2></strong>
-                    {%else%}
-                      <strong><h2><a href='/character/{{url}}'>{{name}}</a></h2></strong>
-                    {%endif%}
-                  {%endfor%}
-                
+          <div class="col-sm-6 margin-30">       
+            {%for name,url,alias in datos%}
+              {%if alias[0]%}
+                <strong><h2><a href='/character/{{url}}'>{{name}} - {{alias[0]}}</a></h2></strong>
+              {%else%}
+                <strong><h2><a href='/character/{{url}}'>{{name}}</a></h2></strong>
+              {%endif%}
+            {%endfor%}              
           </div>
         </div>
       </div>
