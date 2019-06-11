@@ -124,7 +124,7 @@ def character(url):
 			if "," in doc['playedBy'][0]:
 				playedby=doc['playedBy'][0].split(",")[-1]
 			else:
-				playedby=doc['playedBy'][0]
+				playedby=doc['playedBy'][-1]
 			payload={"api_key":key,"query":playedby,"language":language}
 			r_2=requests.get(URL_BASE_actor,params=payload)
 			if r_2.status_code == 200:
