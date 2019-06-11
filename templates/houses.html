@@ -28,12 +28,11 @@
                   <br/>
                 {%if id == 1%}
                   <button><a href='/houses/page={{nexe}}#100' class="button">Next</a></button>
+                {%if id == 23%}
+                  <a href='/houses/page={{previous}}#100' class="button">Previous</a>
                 {%else%}
                   <button><a href='/houses/page={{previous}}#100' class="button">Previous</a></button>
                   <button><a href='/houses/page={{nexe}}#100' class="button">Next</a></button>
-                {%endif%}
-                {%if id == 23%}
-                  <a href='/houses/page={{previous}}#100' class="button">Previous</a>
                 {%endif%}
               {% endif %}
           </div>
