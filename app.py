@@ -28,14 +28,10 @@ def houses(id=1):
 		id=int(id)
 		nexe=id+1
 		previous=id-1
-		if id == "23":
-			final=True
-		else:
-			final=False
 		r=requests.get(URL_BASE+'houses/',params=payload)
 		if r.status_code == 200:
 			doc = r.json()
-			return render_template("houses.html",datos=doc,id=id,nexe=nexe,previous=previous,final=final)
+			return render_template("houses.html",datos=doc,id=id,nexe=nexe,previous=previous)
 	else:
 		name=request.form['busqueda']
 		if name != '':
