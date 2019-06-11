@@ -122,7 +122,7 @@ def character(url):
 			lista=""
 		try:
 			if "," in doc['playedBy'][0]:
-				playedby=doc['playedBy'][0].split(",")[1]
+				playedby=doc['playedBy'][0].split(",")[-1]
 			else:
 				playedby=doc['playedBy'][0]
 			payload={"api_key":key,"query":playedby,"language":language}
