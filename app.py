@@ -30,8 +30,12 @@ def houses(id=1):
 		previous=id-1
 		r=requests.get(URL_BASE+'houses/',params=payload)
 		if r.status_code == 200:
-			doc = r.json()
-			return render_template("houses.html",datos=doc,id=id,nexe=nexe,previous=previous)
+			doc=r.json()
+			if "next" in r.headers['Link']:
+				ultima=False
+			else:
+				ultima=True
+		return render_template("houses.html",datos=doc,id=id,nexe=nexe,previous=previous,ultima=ultima)
 	else:
 		name=request.form['busqueda']
 		if name != '':
